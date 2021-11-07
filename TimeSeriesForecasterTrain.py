@@ -15,7 +15,7 @@ num_classes = 1
 seq_length = 13
 
 def get_available_products():
-    return ["Mint Sauce", "Pilau Rice", "Curry", "Chicken Tikka Masala", "Saag Aloo", "Mixed Starter", "Egg Rice", "Onion Bhaji"]
+    return ["Mint Sauce", "Pilau Rice", "Curry", "Chicken Tikka Masala", "Saag Aloo", "Mixed Starter", "Egg Rice"]
 
 class LSTM(nn.Module):
 
