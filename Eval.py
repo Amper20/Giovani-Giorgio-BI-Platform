@@ -18,9 +18,9 @@ def date_parser(dates):
 def transform_data(sequence, preddictions ,count):
     x = sequence + preddictions
     return x[count:]
-def read_data():
+def read_data(prod):
     data = {}
-    with (open("data_processed.pkl", "rb")) as openfile:
+    with (open(prod + ".pkl", "rb")) as openfile:
         while True:
             try:
                 data = pickle.load(openfile)
@@ -33,13 +33,13 @@ def read_data():
     for (day, idx) in zip(date, range(len(date))):
         date_tuple.append((orig[idx][0], predicted[idx][0], day))
     return date_tuple
-def get_predictions(date, count):
+def get_predictions(date, count, prod):
     ret = {
         'orig':[],
         'pred':[],
         'date':[]
     }
-    data = read_data()
+    data = read_data(prod)
     idx = 0
     for x in range(len(data)):
         if(data[x][2] == date):
