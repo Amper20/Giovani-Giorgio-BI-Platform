@@ -42,7 +42,16 @@ def get_predictions(date, count, prod):
     ret['date'] = [x[2] for x in data[idx:idx + count]]
     return  ret
 
+def get_suggestions():
+    with (open("menus.pkl", "rb")) as openfile:
+        while True:
+            try:
+                data = pickle.load(openfile)
+            except EOFError:
+                break
+    return data
 
 
 if __name__=="__main__":
-   print(get_predictions(parse("2018-04-21T").date(), 10, "Egg Rice"))
+    print(get_predictions(parse("2018-04-21T").date(), 10, "data_processed"))
+    print(get_suggestions())
