@@ -1,16 +1,8 @@
-from torch.autograd import Variable
-from sklearn.preprocessing import MinMaxScaler
-from TimeSeriesForecasterTrain import LSTM, num_classes, input_size, hidden_size, num_layers, model_path, seq_length
-import torch
-import numpy as np
-import pandas as pd
 import pickle
 from dateutil.parser import parse
-from datetime import datetime
 
-lstm = LSTM(num_classes, input_size, hidden_size, num_layers)
-lstm.load_state_dict(torch.load(model_path))
-lstm.eval()
+def get_available_products():
+    return ["Mint Sauce", "Pilau Rice", "Curry", "Chicken Tikka Masala", "Saag Aloo", "Mixed Starter", "Egg Rice"]
 
 def date_parser(dates):
     dates = [x.date() for x in dates]
@@ -53,4 +45,4 @@ def get_predictions(date, count, prod):
 
 
 if __name__=="__main__":
-   print(get_predictions(parse("2018-04-21T").date(), 10))
+   print(get_predictions(parse("2018-04-21T").date(), 10, "Egg Rice"))
